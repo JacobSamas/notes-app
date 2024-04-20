@@ -1,20 +1,19 @@
-function NoteList({ notes, setCurrentNote, deleteNote }) {
-    return (
-      <div className="w-1/4 bg-white shadow-md p-4">
-        <h2 className="text-lg font-semibold mb-4">Notes</h2>
+import React from 'react';
+import { useNotes } from './NotesContext';
+import NoteItem from './NoteItem';
+
+function NoteList() {
+  const { notes, setCurrentNote } = useNotes();
+
+  return (
+    <div className="w-1/4 bg-white dark:bg-gray-800 overflow-auto">
+      <div className="p-5">
         {notes.map(note => (
-          <div key={note.id} className="flex justify-between items-center p-2 hover:bg-gray-100 cursor-pointer">
-            <span onClick={() => setCurrentNote(note)} className="flex-1">
-              {note.title || "New Note"}
-            </span>
-            <button onClick={() => deleteNote(note.id)} className="text-red-500 hover:text-red-700">
-              Delete
-            </button>
-          </div>
+          <NoteItem key={note.id} note={note} setCurrentNote={setCurrentNote} />
         ))}
       </div>
-    );
-  }
-  
-  export default NoteList;
-  
+    </div>
+  );
+}
+
+export default NoteList;
