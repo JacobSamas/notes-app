@@ -1,3 +1,22 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Additional global styles can go here */
+
+/* Toggle Switch Styles */
+.toggle-checkbox:checked {
+    @apply right-0 border-blue-600;
+    right: 0;
+}
+.toggle-checkbox:checked + .toggle-label {
+    @apply bg-blue-600;
+}
+.toggle-checkbox {
+    @apply absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer;
+    top: 0;
+    left: 0;
+}
+.toggle-label {
+    @apply block overflow-hidden h-6 rounded-full bg-gray-300 cursor-pointer;
+}
